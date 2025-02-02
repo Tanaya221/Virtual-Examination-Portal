@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* General page style */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Form container */
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+            box-sizing: border-box;
+        }
+
+        /* Buttons style */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            margin: 10px 0;
+            width: 100%;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Button active state */
+        button:active {
+            background-color: #388e3c;
+        }
+
+        /* Title style */
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <h1>Question Management</h1>
+        <button formaction="/loginapp/viewquestion/">View Questions</button>
+        <button formaction="/loginapp/addquestion/">Add Question</button>
+        <button formaction="/loginapp/updatequestion/">Update Question</button>
+        <button formaction="/loginapp/deletequestion/">Delete Question</button><br><br>
+        
+        <input type="submit" value="back" formaction="/loginapp/admin/">
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Form Container */
+        form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /* Input fields */
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        /* Radio buttons */
+        input[type="radio"] {
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+
+        /* Labels for radio buttons */
+        span {
+            font-size: 16px;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        /* Submit Buttons */
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 48%;
+            margin: 10px 1%;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Input Buttons Layout */
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Placeholder Text Style */
+        ::placeholder {
+            color: #888;
+        }
+
+        /* Heading */
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <form method="GET">
+        <!-- <h3>Question {{ question.qno }} ({{ CQ }} of {{ AQ }})</h3> -->
+        {% csrf_token %}
+        <input type="text" name="qno" value="{{qno}}" readonly>
+
+        <input type="text" name="qtxt" value="{{question.qtxt}}" readonly>
+
+        <input type="hidden" name="sub" value="{{question.sub}}" readonly>
+        
+        <input type="hidden" name="ans" value="{{question.ans}}" readonly>
+
+        <input type="radio" name="op" value="{{question.op1}}" {% if previousanswer == question.op1 %} checked {% endif %}><span>{{question.op1}}</span>
+        <input type="radio" name="op" value="{{question.op2}}" {% if previousanswer == question.op2 %} checked {% endif %}><span>{{question.op2}}</span>
+        <input type="radio" name="op" value="{{question.op3}}" {% if previousanswer == question.op3 %} checked {% endif %}><span>{{question.op3}}</span>
+        <input type="radio" name="op" value="{{question.op4}}" {% if previousanswer == question.op4 %} checked {% endif %}><span>{{question.op4}}</span>
+
+
+        
+        <input type="submit" name="nextpage" value="nextpage" formaction="/loginapp/nextpage/">
+        <input type="submit" name="previouspage" value="previouspage" formaction="/loginapp/previouspage/" >
+        <input type="submit" name="end exam" value="end exam" formaction="/loginapp/endexam/">
+        
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congratulations - Exam Results</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fc;
+        }
+
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 50px;
+        }
+        h4 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+        /* Table styling */
+        table {
+            width: 80%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* CSRF token section */
+        form {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Score styling */
+        .score {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form method="get">
+        {% csrf_token %}
+        <h1>Congratulations!</h1>
+        <div class="score">
+            <h2>Your Score: {{ score }}</h2>
+        </div>
+        <h4> Wrong answer: {{wrong_ans}} </h4> <h4> Right answer:  {{ score }} </h4>
+        <!-- Display the results table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Qno</th>
+                    <th>Question</th>
+                    <th>Database Answer</th>
+                    <th>Submitted Answer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for list in lists %}
+                <tr>
+                    <td>{{ list.0 }}</td>
+                    <td>{{ list.1 }}</td>
+                    <td>{{ list.2 }}</td>
+                    <td>{{ list.3 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <input type="submit" value="back" formaction="/loginapp/login/">
+    </form>
+</body>
+</html>

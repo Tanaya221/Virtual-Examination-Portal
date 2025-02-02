@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Question</title>
+    <style>
+        /* Reset some basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Full page layout */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 600px;
+            font-size: 16px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Styling the form */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            width: 100%;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            padding: 12px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        input::placeholder {
+            font-style: italic;
+            color: #777;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            input[type="text"] {
+                font-size: 14px;
+            }
+            input[type="submit"] {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Add Question</h1>
+        <form method="POST">
+            {% csrf_token %}
+            
+            <input type="text" name="qno" value="{{ question.qno }}" placeholder="Enter Question No" required>
+>
+            <input type="text" name="qtxt" value="{{ question.qtxt }}" placeholder="Enter Question" required>
+
+            <input type="text" name="sub" value="{{ question.sub }}" placeholder="Enter Subject" required>
+
+            <input type="text" name="ans" value="{{ question.ans }}" placeholder="Enter Answer" required>
+
+            <input type="text" name="op1" value="{{ question.op1 }}" placeholder="Option 1" required>
+            <input type="text" name="op2" value="{{ question.op2 }}" placeholder="Option 2" required>
+            <input type="text" name="op3" value="{{ question.op3 }}" placeholder="Option 3" required>
+            <input type="text" name="op4" value="{{ question.op4 }}" placeholder="Option 4" required>
+
+            <input type="submit" value="Add Question" formaction="/loginapp/addquestion/">
+        </form>
+    </div>
+
+</body>
+</html>
